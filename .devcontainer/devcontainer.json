@@ -1,0 +1,30 @@
+{
+    "name": "Odoo Dev Container",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "odoo_web",
+    "workspaceFolder": "/customs",
+    "remoteUser": "root",
+    "forwardPorts": [8069],
+    "shutdownAction": "stopCompose",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash"
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "GitHub.copilot",
+                "GitHub.copilot-chat",
+                "DavidAnson.vscode-markdownlint",
+                "DotJoshJohnson.xml"
+            ]
+        }
+    },
+    "mounts": [
+        "source=odoo17-web-data,target=/var/lib/odoo",
+        "source=${localWorkspaceFolder}/customs,target=/customs,type=bind",
+        "source=${localWorkspaceFolder}/enterprise,target=/mnt/enterprise,type=bind"
+    ],
+    "overrideCommand": false
+}
